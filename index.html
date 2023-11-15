@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chain Chats</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .main-container {
+    background: linear-gradient(to right, #9C27B0, #673AB7);
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .title {
+    color: #FFA726;
+    margin-bottom: 20px;
+  }
+  .description {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .form-container {
+    text-align: center;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px; /* Adjusted margin for spacing between inputs */
+    width: 80%; /* You can adjust this width as necessary */
+    border: 2px solid #555; /* Example border style */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for input background */
+    color: white; /* White text color */
+  }
+
+  input[type="text"]::placeholder {
+    color: #bbb; /* Lighter color for placeholder text */
+}
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #FFA726;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  button:hover {
+    background-color: #FB8C00;
+  }
+</style>
+</head>
+<body>
+<div class="main-container">
+  <div class="title">
+    <h1>Welcome to CHAIN CHATS</h1>
+  </div>
+  <div class="description">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+       <br>
+       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos
+       <br>
+       trud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+  <div class="form-container">
+    <input type="text"  placeholder="Your name..." id="nameInput">
+    <button type="submit" onclick="createUser()">Submit</button>
+    <button type="button" onclick="redirectToMainPage()">Cancel</button>
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
