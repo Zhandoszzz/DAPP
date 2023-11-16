@@ -24,37 +24,70 @@
   <!-- Main Chat Area -->
   <main>
     <!-- Users Sidebar -->
-    <aside>
-      <div class="search">
-        <input type="text" placeholder="Search">
+    <aside class="users-sidebar">
+      <!-- Search Bar -->
+      <div class="search-container">
+          <input type="text" id="userSearch" placeholder="Search users..." class="search-bar">
       </div>
-      <ul class="user-list">
-        <!-- Repeat for each user -->
-        <li>
-          <div class="user-avatar"></div>
-          <div class="user-details">
-            <p class="user-name">Zhandos S.</p>
-            <p class="user-id">c0601020475...</p>
+
+      <!-- Users List -->
+      <div class="users-list">
+          <!-- User Item -->
+          <div class="user-item">
+              <img src="user.png" alt="User Logo" class="user-logo">
+              <span class="user-name">Zhandos Shakimurat</span>
           </div>
-        </li>
-        <!-- More users -->
-      </ul>
+          <div class="user-item">
+            <img src="user.png" alt="User Logo" class="user-logo">
+            <span class="user-name">Amini Abdul Shokoor</span>
+          </div>
+          <div class="user-item">
+            <img src="user.png" alt="User Logo" class="user-logo">
+            <span class="user-name">Alikhan Aliaidar</span>
+          </div>
+          <div class="user-item">
+            <img src="user.png" alt="User Logo" class="user-logo">
+            <span class="user-name">Dimash Kenesbek</span>
+          </div>
+          <div class="user-item">
+            <img src="user.png" alt="User Logo" class="user-logo">
+            <span class="user-name">Nurmash Aisaut</span>
+          </div>
+          <!-- Repeat for each user -->
+          <!-- ... -->
+      </div>
     </aside>
 
     <!-- Chat Window -->
-    <section class="chat-window">
-      <header>
-        <h2>Zhandos Shakimurat</h2>
-        <span class="user-id">c0601c09e34...</span>
-      </header>
+    <div class="chat-window">
+      <!-- Chat Header -->
+      <div class="chat-header">
+          <h2 class="interlocutor-name">Zhandos Shakimurat</h2>
+          <span class="interlocutor-id">3b7ad13689acdbc1f0367a...</span>
+      </div>
+
+      <!-- Chat Messages Area -->
       <div class="chat-messages">
-        <!-- Messages will be displayed here -->
+        <!-- User's Message -->
+        <div class="message sent">
+            <p>This is a message from the user.</p>
+            <span class="timestamp">12:45 PM</span>
+        </div>
+        <!-- Interlocutor's Message -->
+        <div class="message received">
+            <p>This is a message from the interlocutor.</p>
+            <span class="timestamp">12:46 PM</span>
+        </div>
+        <!-- More messages... -->
       </div>
-      <div class="chat-input">
-        <input type="text" placeholder="type your message">
-        <button>SEND</button>
+
+
+      <!-- Message Input Area -->
+      <div class="message-input-area">
+          <input type="text" class="message-input" placeholder="Type your message...">
+          <button class="send-btn">Send</button>
       </div>
-    </section>
+  </div>
   </main>
 
   <!-- Footer -->
