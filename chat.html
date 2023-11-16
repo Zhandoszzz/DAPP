@@ -3,58 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Application</title>
+  <title>ChainChats</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">4N</div>
-    <div class="navbar-links">
-      <a href="#">All Users</a>
-      <a href="#">CHAT</a>
-      <a href="#">CONTACT</a>
-      <!-- Add more links as needed -->
-    </div>
-    <div class="user-name">Daulat Hussain</div>
-  </div>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#">USERS</a></li>
+      <li><a href="#" class="active">CHAT</a></li>
+      <li><a href="#">CONTACT</a></li>
+      <li><a href="#">SETTING</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">TERMS OF USE</a></li>
+    </ul>
+    <div class="user">Daulet K.</div>
+  </nav>
 
-  <!-- Main Container -->
-  <div class="chat-container">
-    <!-- Friends Sidebar -->
-    <div class="friends-sidebar">
-      <!-- Search Input -->
-      <input type="text" placeholder="search" class="search-bar">
-      <!-- Friends List -->
-      <ul class="friends-list">
-        <!-- Repeat this list item for each friend -->
-        <li class="friend">
-          <img src="avatar.jpg" alt="Friend Image">
-          <div class="friend-info">
-            <h2 class="name">Shoaib Bhai</h2>
-            <p class="id">85d29e03d12FA4293BC...</p>
+  <!-- Main Chat Area -->
+  <main>
+    <!-- Users Sidebar -->
+    <aside>
+      <div class="search">
+        <input type="text" placeholder="Search">
+      </div>
+      <ul class="user-list">
+        <!-- Repeat for each user -->
+        <li>
+          <div class="user-avatar"></div>
+          <div class="user-details">
+            <p class="user-name">Zhandos S.</p>
+            <p class="user-id">c0601020475...</p>
           </div>
         </li>
-        <!-- More friends -->
+        <!-- More users -->
       </ul>
-    </div>
+    </aside>
 
-    <!-- Chat Area -->
-    <div class="chat-area">
-      <!-- Chat Box -->
-      <div class="chat-box">
-        <!-- Repeat this for each message -->
-        <div class="message">
-          <p>In publishing and graphic design, Lorem ipsum is a placeholder text...</p>
-        </div>
-        <!-- More messages -->
+    <!-- Chat Window -->
+    <section class="chat-window">
+      <header>
+        <h2>Zhandos Shakimurat</h2>
+        <span class="user-id">c0601c09e34...</span>
+      </header>
+      <div class="chat-messages">
+        <!-- Messages will be displayed here -->
       </div>
-      <!-- Message Input -->
-      <div class="message-input">
+      <div class="chat-input">
         <input type="text" placeholder="type your message">
-        <button type="submit">Send</button>
+        <button>SEND</button>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Copyright 2023 All Rights Reserved ChainChats, LLC</p>
+  </footer>
 </body>
 </html>
