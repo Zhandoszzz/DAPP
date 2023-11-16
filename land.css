@@ -34,6 +34,19 @@ body, html {
     color: white;
     font-weight: 400;
   }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    padding: 10px; /* Add padding for a larger clickable area */
+    transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  nav ul li a:hover, nav ul li a:focus {
+    color: #FFA726; /* Orange color on hover */
+    border-bottom: 2px solid #FFA726; /* Orange bottom border on hover */
+  }
   
   main .welcome-text {
     text-align: center;
@@ -43,13 +56,45 @@ body, html {
   main .welcome-text h1 {
     font-size: 3em;
     font-weight: 600;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
   }
   
   main .welcome-text p {
-    font-weight: 400;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto; /* Center the text block */
+    font-weight: 800;
+    line-height: 0.5;
+    max-width: 700px;
+    margin: 1 auto; /* Center the text block */
+  }
+
+  .container {
+    display: flex;
+    height: 100vh; /* Adjust the height as needed */
+    align-items: flex-start
+  }
+  
+  .image-area {
+    flex: 1; /* Takes up half of the container */
+    background-image: url('path-to-your-image.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .welcome-text {
+    flex: 1; /* Takes up the remaining half of the container */
+    padding: 20px; /* Add padding as needed */
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align text to the start (left) of the 'welcome-text' div */
+  }
+  
+  .highlight {
+    color: #FFA726; /* Orange color */
+  }
+
+
+  .highlight {
+    color: #FFA726; /* Orange color */
   }
   
