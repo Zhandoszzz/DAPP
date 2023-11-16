@@ -1,0 +1,123 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, #9C27B0, #673AB7); /* Main background color */
+    color: white; /* Main text color */
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #9C27B0, #673AB7);/* Darker purple for the header */
+  }
+  
+  .logo {
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    padding: 10px; /* Add padding for a larger clickable area */
+    transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  nav ul li a:hover, nav ul li a:focus {
+    color: #FFA726; /* Orange color on hover */
+    border-bottom: 2px solid #FFA726; /* Orange bottom border on hover */
+  }
+
+  .search-container {
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  #userSearch {
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 40px;
+    background:  white;
+    border: 2px transparent;
+    opacity: 0.2;
+  }
+  
+  .users-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribute cards evenly */
+    padding: 0 20px;
+  }
+  
+  .user-card {
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+    padding: 5px;
+    margin-bottom: 20px; /* Space between cards */
+    width: calc(33.333% - 40px); /* Three cards per row with padding adjustment */
+    text-align: center;
+  }
+  
+  .user-name {
+    color: #333; /* Dark grey color for text */
+    margin: 0;
+  }
+  
+  .user-address {
+    color: #666; /* Lighter grey color for text */
+    font-size: 0.9em;
+  }
+  
+  .add-friend-btn {
+    background-color: #9C27B0; /* Primary color for the button */
+    color: #ffffff; /* White text color */
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px; /* Space above the button */
+    transition: background-color 0.3s;
+  }
+  
+  .add-friend-btn:hover {
+    background-color: #673AB7; /* Darker purple for hover effect */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .user-card {
+      width: calc(50% - 40px); /* Two cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #userSearch {
+      width: 70%; /* Wider search bar on very small screens */
+    }
+  
+    .user-card {
+      width: calc(100% - 40px); /* Full width cards on very small screens */
+    }
+  }

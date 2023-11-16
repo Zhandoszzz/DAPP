@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Error Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
 <style>
   body, html {
   height: 100%;
   margin: 0;
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
   }
   .main-container {
     background: linear-gradient(to right, #9C27B0, #673AB7);
@@ -35,12 +36,15 @@
   button:hover {
     background-color: #FB8C00;
   }
+  .wrong {
+    color: white;
+  }
 </style>
 </head>
 <body>
 <div class="main-container">
   <div class="error-message">
-    <h1>Oops! Something went wrong...</h1>
+    <h1>Oops! <span class="wrong">Something went wrong...</span></h1>
     <button type="button" onclick="window.location.href='index.html'">BACK TO HOME</button>
   </div>
 </div>

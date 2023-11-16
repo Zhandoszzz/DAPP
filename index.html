@@ -4,11 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chain Chats</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
 <style>
   body, html {
     height: 100%;
     margin: 0;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #9C27B0, #673AB7);/* Darker purple for the header */
+  }
+  
+  .logo {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: white;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-left: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    padding: 10px; /* Add padding for a larger clickable area */
+    transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  nav ul li a:hover, nav ul li a:focus {
+    color: #FFA726; /* Orange color on hover */
+    border-bottom: 2px solid #FFA726; /* Orange bottom border on hover */
   }
   .main-container {
     background: linear-gradient(to right, #9C27B0, #673AB7);
@@ -57,9 +101,22 @@
 </style>
 </head>
 <body>
+  <header>
+    <div class="logo">ChainChats</div>
+    <nav>
+      <ul>
+        <li><a href="allUsers.html">USERS</a></li>
+        <li><a href="chat.html">CHAT</a></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><a href="#">SETTING</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">TERMS OF USE</a></li>
+      </ul>
+    </nav>
+  </header>
 <div class="main-container">
   <div class="title">
-    <h1>Welcome to CHAIN CHATS</h1>
+    <h1>REGISTER</h1>
   </div>
   <div class="description">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

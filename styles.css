@@ -3,30 +3,51 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(to right, #9C27B0, #673AB7); /* Purple background */
 }
 
-nav {
+header {
   display: flex;
   justify-content: space-between;
-  align-items: center;/* Darker purple for the navbar */
+  align-items: center;
   padding: 10px 20px;
+  background: linear-gradient(to right, #9C27B0, #673AB7);/* Darker purple for the header */
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: white;
 }
 
 nav ul {
   list-style: none;
   display: flex;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
 }
 
 nav ul li a {
-  color: white;
   text-decoration: none;
-  margin-right: 20px;
+  color: white;
+  font-weight: 400;
 }
 
-nav ul li a.active {
-  border-bottom: 2px solid #FFA726; /* Active link underline */
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  padding: 10px; /* Add padding for a larger clickable area */
+  transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition for hover effect */
+}
+
+nav ul li a:hover, nav ul li a:focus {
+  color: #FFA726; /* Orange color on hover */
+  border-bottom: 2px solid #FFA726; /* Orange bottom border on hover */
 }
 
 .user {

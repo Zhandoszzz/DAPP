@@ -3,9 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <title>All Users Information from Smart Contract</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="users.css">
 </head>
 <body>
-  <h1>All Users Information</h1>
+  <header>
+    <div class="logo">ChainChats</div>
+    <nav>
+      <ul>
+        <li><a href="allUsers.html">USERS</a></li>
+        <li><a href="chat.html">CHAT</a></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><a href="#">SETTING</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">TERMS OF USE</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- User Search Field -->
+    <div class="search-container">
+    <input type="text" id="userSearch" placeholder="Search users...">
+  </div>
+
+  <!-- Users List -->
+  <div class="users-container">
+    <!-- User Card -->
+    <div class="user-card">
+      <h2 class="user-name">User Name</h2>
+      <p class="user-address">0x123...ABC</p>
+      <button class="add-friend-btn">Add Friend</button>
+    </div>
+    <div class="user-card">
+      <h2 class="user-name">User Name</h2>
+      <p class="user-address">0x123...ABC</p>
+      <button class="add-friend-btn">Add Friend</button>
+    </div>
+    <div class="user-card">
+      <h2 class="user-name">User Name</h2>
+      <p class="user-address">0x123...ABC</p>
+      <button class="add-friend-btn">Add Friend</button>
+    </div>
+    <div class="user-card">
+      <h2 class="user-name">User Name</h2>
+      <p class="user-address">0x123...ABC</p>
+      <button class="add-friend-btn">Add Friend</button>
+    </div>
+  </div>
+
+  
+  
+  
+    <!-- Repeat User Card for each user -->
+    <!-- ... -->
+
+     
   <div id="allUsers"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
