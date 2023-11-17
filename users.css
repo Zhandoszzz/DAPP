@@ -18,6 +18,11 @@ body, html {
     font-size: 1.8em;
     font-weight: 600;
   }
+  .plain-link {
+    color: inherit; /* This makes the link's color the same as the parent text color */
+    text-decoration: none; /* Removes the underline from the link */
+  }
+  
   
   nav ul {
     list-style: none;
