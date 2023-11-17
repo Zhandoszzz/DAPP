@@ -69,6 +69,7 @@ body, html {
     line-height: 0.5;
     max-width: 700px;
     margin: 1 auto; /* Center the text block */
+    margin-top: 1px;
   }
 
   .container {
@@ -102,4 +103,49 @@ body, html {
   .highlight {
     color: #FFA726; /* Orange color */
   }
+
+  .login {
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form-container {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px; /* Adjusted margin for spacing between inputs */
+    width: 80%; /* You can adjust this width as necessary */
+    border: 2px solid #555; /* Example border style */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for input background */
+    color: white; /* White text color */
+  }
+
+  input[type="text"]::placeholder {
+    color: #bbb; /* Lighter color for placeholder text */
+}
+  button {
+    padding: 10px 20px;
+    border: 1px;
+    background-color: #FFA726;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  button:hover {
+    background-color: #FB8C00;
+  }
+  .desc {
+    margin-top: 5px; /* Add some space above the prompt */
+    margin-bottom: 10px;
+    text-align: left; /* Center the text */
+    font-size: 0.9em; /* Adjust font size as needed */
+    opacity: 0.7;
+}
   

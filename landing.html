@@ -29,6 +29,17 @@
       <div class="welcome-text">
         <h1><span class="highlight">Welcome to</span> CHAIN CHATS</h1>
         <p>Connect and converse securely with ChainChats, the decentralized chat platform.</p>
+        <div class="login">
+          <div class="form-container">
+            <div class="desc">
+              Log in using a cryptocurrency wallet <!-- Link to your sign-up page -->
+            </div>
+            <input type="text"  placeholder="Your name..." id="nameInput">
+            <button type="submit" onclick="createUser()">Submit</button>
+            <button type="button" onclick="redirectToMainPage()">Cancel</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+        <script src="app.js"></script>
       </div>
     </div>
   </main>
