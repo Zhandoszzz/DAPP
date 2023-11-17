@@ -254,40 +254,37 @@ async function addFriend(friendAddress, friendName) {
     }
 }
 
-//check
-async function getFriends() {
-    try {
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        const currentAccount = accounts[0];
 
-        const friends = await contract.methods.getFriends().call({ from: currentAccount });
-        
-        console.log('List of Friends:', friends);
-        return friends
-    } catch (error) {
-        console.error('Error retrieving friends:', error);
-    }
+
+function displayAllUsersSearch(searchText) {
+    contract.methods.getAllAppUser().call((error, result) => {
+        if (!error) {
+            const allUsersElement = document.getElementById('allUsers');
+            allUsersElement.innerHTML = "";
+            result.forEach((user, index) => {
+                const { name, accountAddress } = user;
+                if (name.startsWith(searchText)){
+                const userInfoElement = document.createElement('div');
+                userInfoElement.classList.add('user-card');                    
+                userInfoElement.innerHTML = `
+  <h2 class="user-name">${name}</h2>
+  <p class="user-address">${accountAddress}</p>
+  <button class="add-friend-btn" onclick="addFriend('${accountAddress}','${name}')" >Add Friend</button>
+      `;
+                allUsersElement.appendChild(userInfoElement);
+                console.log(allUsersElement)}
+            });
+        } else {
+            console.error('Error fetching users:', error);
+        }
+    });
 }
-//check
-async function readMessages(friendAddress) {
-    try {
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        const currentAccount = accounts[0];
-
-        // Call the contract method 'readMessage'
-        const messages = await contract.methods.readMessage(friendAddress).call({ from: currentAccount });
-
-        // Handle the retrieved messages
-        console.log('Messages with Friend:', messages);
-        // You can perform additional actions or UI updates with the messages
-    } catch (error) {
-        // Handle errors
-        console.error('Error reading messages:', error);
-    }
-}
-
-
 
 function redirectToMainPage() {
     window.location.href = 'landing.html';
 }
+const userSearchInput = document.getElementById('userSearch');
+userSearchInput.addEventListener('input', function() {
+    const userSearch = userSearchInput.value;
+    displayAllUsersSearch(userSearch);
+});

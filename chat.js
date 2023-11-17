@@ -187,46 +187,46 @@ window.addEventListener('load', async () => {
     contract = new web3.eth.Contract(contractABI, contractAddress);
     
     // Function to display all existing users
-    async function displayFriends() {
-        try {
-            const friends = await getFriends();
-            const friendsElement = document.getElementById('friendsList');
-            for (const friend of friends) {
-                const { name, pubkey } = friend;
-                const friendInfoElement = document.createElement('div');
-                friendInfoElement.classList.add('friend-card');
     
-                const anchorElement = document.createElement('a');
-                anchorElement.addEventListener('click', () => displayMessages(pubkey));
-    
-                const userItem = document.createElement('div');
-                userItem.classList.add('user-item');
-    
-                const userImage = document.createElement('img');
-                userImage.src = 'user.png';
-                userImage.alt = 'User Logo';
-                userImage.classList.add('user-logo');
-    
-                const userName = document.createElement('span');
-                userName.textContent = name;
-                userName.classList.add('user-name');
-    
-                userItem.appendChild(userImage);
-                userItem.appendChild(userName);
-                anchorElement.appendChild(userItem);
-                friendInfoElement.appendChild(anchorElement);
-                friendsElement.appendChild(friendInfoElement);
-            }
-        } catch (error) {
-            console.error('Error displaying friends:', error);
-        }
-    }
     
 
     displayFriends()
 
 });
+async function displayFriends() {
+    try {
+        const friends = await getFriends();
+        const friendsElement = document.getElementById('friendsList');
+        for (const friend of friends) {
+            const { name, pubkey } = friend;
+            const friendInfoElement = document.createElement('div');
+            friendInfoElement.classList.add('friend-card');
 
+            const anchorElement = document.createElement('a');
+            anchorElement.addEventListener('click', () => displayMessages(pubkey));
+
+            const userItem = document.createElement('div');
+            userItem.classList.add('user-item');
+
+            const userImage = document.createElement('img');
+            userImage.src = 'user.png';
+            userImage.alt = 'User Logo';
+            userImage.classList.add('user-logo');
+
+            const userName = document.createElement('span');
+            userName.textContent = name;
+            userName.classList.add('user-name');
+
+            userItem.appendChild(userImage);
+            userItem.appendChild(userName);
+            anchorElement.appendChild(userItem);
+            friendInfoElement.appendChild(anchorElement);
+            friendsElement.appendChild(friendInfoElement);
+        }
+    } catch (error) {
+        console.error('Error displaying friends:', error);
+    }
+}
 async function getFriends() {
     try {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -253,9 +253,19 @@ async function readMessages(friendAddress) {
         console.error('Error reading messages:', error);
     }
 }
+intervalIds = [];
+function clearAllIntervals() {
+    intervalIds.forEach((id) => {
+        clearInterval(id);
+    });
+
+    intervalIds = [];
+}
+
 
 async function displayMessages(friendAddress) {
     try {
+        clearAllIntervals();
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         const currentAccount = accounts[0];
         const friendUsername = await contract.methods.getUsername(friendAddress).call();
@@ -288,7 +298,70 @@ async function displayMessages(friendAddress) {
 
                 messagesContainer.appendChild(msgElement);
         });
+        intervalId = setInterval(async () => {
+            await displayMessages(friendAddress);
+        }, 3000);
+        intervalIds.push(intervalId)
+    } catch (error) {
+        console.error('Error displaying friends:', error);
+    }    
+}
+async function sendMessage() {
+    try {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const currentAccount = accounts[0];
+
+        const friendAddress = document.getElementById('receiver-address').textContent;
+        const messageInput = document.getElementById('send-message');
+        const messageContent = messageInput.value;
+        messageInput.value = "";
+        const result = await contract.methods.sendMessage(friendAddress, messageContent).send({ from: currentAccount });
+        
+        console.log('Message sent:', result);
+    } catch (error) {
+        console.error('Error sending message:', error);
+    }
+}
+
+async function displayFriendsSearch(searchText) {
+    try {
+        const friends = await getFriends();
+        const friendsElement = document.getElementById('friendsList');
+        friendsElement.innerHTML = ''
+        for (const friend of friends) {
+            const { name, pubkey } = friend;
+            if (name.startsWith(searchText)){
+                const friendInfoElement = document.createElement('div');
+                friendInfoElement.classList.add('friend-card');
+
+                const anchorElement = document.createElement('a');
+                anchorElement.addEventListener('click', () => displayMessages(pubkey));
+
+                const userItem = document.createElement('div');
+                userItem.classList.add('user-item');
+
+                const userImage = document.createElement('img');
+                userImage.src = 'user.png';
+                userImage.alt = 'User Logo';
+                userImage.classList.add('user-logo');
+
+                const userName = document.createElement('span');
+                userName.textContent = name;
+                userName.classList.add('user-name');
+
+                userItem.appendChild(userImage);
+                userItem.appendChild(userName);
+                anchorElement.appendChild(userItem);
+                friendInfoElement.appendChild(anchorElement);
+                friendsElement.appendChild(friendInfoElement);
+        }}
     } catch (error) {
         console.error('Error displaying friends:', error);
     }
 }
+
+const userSearchInput = document.getElementById('userSearch');
+userSearchInput.addEventListener('input', function() {
+    const userSearch = userSearchInput.value;
+    displayFriendsSearch(userSearch);
+});
