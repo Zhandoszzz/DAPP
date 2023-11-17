@@ -73,6 +73,7 @@ body, html {
     outline: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 1.2em;
 }
 
 .question:hover {
@@ -85,4 +86,8 @@ body, html {
     opacity: 0.8;
     display: none; /* Initially hide the answer */
     border: 1px  #ddd;
+}
+
+.faq p {
+    margin-left: 5px;
 }
