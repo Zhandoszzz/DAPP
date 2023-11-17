@@ -185,109 +185,110 @@ window.addEventListener('load', async () => {
     ];
 
     contract = new web3.eth.Contract(contractABI, contractAddress);
-
+    
     // Function to display all existing users
-    function displayAllUsers() {
-        contract.methods.getAllAppUser().call((error, result) => {
-            if (!error) {
-                const allUsersElement = document.getElementById('allUsers');
-                result.forEach((user, index) => {
-                    const { name, accountAddress } = user;
-                    const userInfoElement = document.createElement('div');
-                    userInfoElement.classList.add('user-card');                    
-                    userInfoElement.innerHTML = `
-      <h2 class="user-name">${name}</h2>
-      <p class="user-address">${accountAddress}</p>
-      <button class="add-friend-btn" onclick="addFriend('${accountAddress}','${name}')" >Add Friend</button>
-          `;
-                    allUsersElement.appendChild(userInfoElement);
-                    console.log(allUsersElement)
-                });
-            } else {
-                console.error('Error fetching users:', error);
+    async function displayFriends() {
+        try {
+            const friends = await getFriends();
+            const friendsElement = document.getElementById('friendsList');
+            for (const friend of friends) {
+                const { name, pubkey } = friend;
+                const friendInfoElement = document.createElement('div');
+                friendInfoElement.classList.add('friend-card');
+    
+                const anchorElement = document.createElement('a');
+                anchorElement.addEventListener('click', () => displayMessages(pubkey));
+    
+                const userItem = document.createElement('div');
+                userItem.classList.add('user-item');
+    
+                const userImage = document.createElement('img');
+                userImage.src = 'user.png';
+                userImage.alt = 'User Logo';
+                userImage.classList.add('user-logo');
+    
+                const userName = document.createElement('span');
+                userName.textContent = name;
+                userName.classList.add('user-name');
+    
+                userItem.appendChild(userImage);
+                userItem.appendChild(userName);
+                anchorElement.appendChild(userItem);
+                friendInfoElement.appendChild(anchorElement);
+                friendsElement.appendChild(friendInfoElement);
             }
-        });
+        } catch (error) {
+            console.error('Error displaying friends:', error);
+        }
     }
+    
 
-    displayAllUsers();
-
+    displayFriends()
 
 });
-async function createUser() {
 
-    try {
-
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        const account = accounts[0];
-        const name = document.querySelector('#nameInput').value
-
-        console.log(name, account)
-        // Call the contract's createAccount function to create a new user
-        const tx = await contract.methods.createAccount(name).send({
-            from: account,
-        });
-
-        // Transaction successful
-        console.log('User created:', tx);
-        alert('User created successfully!');
-
-        window.location.href = 'chat.html';
-
-    } catch (error) {
-
-        console.error('Error creating user:', error.message);
-
-        alert('Error creating user. Please check the console.');
-    }
-}
-
-async function addFriend(friendAddress, friendName) {
-    try {
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        const currentAccount = accounts[0];
-
-        const result = await contract.methods.addFriend(friendAddress, friendName).send({ from: currentAccount });
-
-        console.log('Friend added:', result);
-    } catch (error) {
-        console.error('Error adding friend:', error);
-    }
-}
-
-//check
 async function getFriends() {
     try {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         const currentAccount = accounts[0];
 
         const friends = await contract.methods.getFriends().call({ from: currentAccount });
-        
+
         console.log('List of Friends:', friends);
         return friends
     } catch (error) {
         console.error('Error retrieving friends:', error);
     }
 }
-//check
 async function readMessages(friendAddress) {
     try {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         const currentAccount = accounts[0];
 
-        // Call the contract method 'readMessage'
         const messages = await contract.methods.readMessage(friendAddress).call({ from: currentAccount });
 
-        // Handle the retrieved messages
         console.log('Messages with Friend:', messages);
-        // You can perform additional actions or UI updates with the messages
+        return messages
     } catch (error) {
-        // Handle errors
         console.error('Error reading messages:', error);
     }
 }
 
+async function displayMessages(friendAddress) {
+    try {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const currentAccount = accounts[0];
+        const friendUsername = await contract.methods.getUsername(friendAddress).call();
+        const friends = await getFriends();
+        const friendsElement = document.getElementById('friendsList');
 
+        const receiverName = document.getElementById('receiver-name');
+        const receiverAddress = document.getElementById('receiver-address');
+        receiverName.textContent  = friendUsername;
+        receiverAddress.textContent  = friendAddress;
+        messages = await contract.methods.readMessage(friendAddress).call({ from: currentAccount });
+        console.log(messages)
+        const messagesContainer = document.getElementById("chat-messages")
+        while (messagesContainer.firstChild) {
+            messagesContainer.removeChild(messagesContainer.firstChild);
+        }
+        messages.forEach(async (message, index) => {
+            const { msg, sender } = message;
+            console.log(msg, sender, currentAccount)
+            const msgElement = document.createElement('div');
+            msgElement.classList.add('message');
+            if (sender.toLowerCase() == currentAccount){
+                msgElement.classList.add('sent');
+            }else{
+                msgElement.classList.add('received');
+            }
+            msgElement.innerHTML = `
+            <p>${msg}</p>
+                `;
 
-function redirectToMainPage() {
-    window.location.href = 'landing.html';
+                messagesContainer.appendChild(msgElement);
+        });
+    } catch (error) {
+        console.error('Error displaying friends:', error);
+    }
 }
