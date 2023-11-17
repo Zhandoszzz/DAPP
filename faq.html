@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChainChats Landing Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="landing.html" class="plain-link">ChainChats</a></div>
+    <nav>
+      <ul>
+        <li><a href="allUsers.html">USERS</a></li>
+        <li><a href="chat.html">CHAT</a></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><a href="#">SETTING</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq">
+        <button class="question">Question 1: What is ChainChats?</button>
+        <div class="answer">
+            <p>ChainChats is a decentralized chat application that allows users to communicate securely and privately. Utilizing blockchain technology, it ensures that conversations are encrypted and free from central oversight, providing a new level of privacy in digital communication.</p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="question">Question 2: How does ChainChats ensure user privacy?</button>
+        <div class="answer">
+            <p>ChainChats uses advanced encryption protocols within a decentralized framework. This means that messages are encrypted end-to-end, and only the communicating users have access to the content. There are no central servers where data is stored, significantly reducing the risk of data breaches or surveillance.</p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="question">Question 3: Is ChainChats free to use?</button>
+        <div class="answer">
+            <p>Yes, ChainChats is completely free to use. Our mission is to provide secure and private communication accessible to everyone, without the need for subscription fees or hidden costs.</p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="question">Question 4: Can I use ChainChats on multiple devices?</button>
+        <div class="answer">
+            <p>Currently, ChainChats is designed to be used on a single device per account for security reasons. This ensures that your private keys, which secure your messages, are not exposed by being shared across multiple devices.</p>
+        </div>
+    </div>
+
+    <div class="faq">
+        <button class="question">Question 5: What makes ChainChats different from other chat applications?</button>
+        <div class="answer">
+            <p>Unlike traditional chat applications, ChainChats operates on a decentralized network. This means there is no central point of control or data storage, giving users full control over their data and communications. Additionally, the decentralized nature of ChainChats makes it more resistant to censorship and external control.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll('.faq .question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+
+</body>
+</html>
